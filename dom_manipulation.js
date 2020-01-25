@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer;
+var scores, roundScore, activePlayer, gamePlaying;
 
 init();
 
@@ -39,35 +39,41 @@ function init() {
 
 document.querySelector(".btn-roll").addEventListener("click", function() {
   //random number
+  if (gamePlaying) {
+    var dice = Math.floor(Math.random() * 6) + 1;
+    console.log(dice);
+    //display
+    var diceDOM = document.querySelector(".dice");
+    diceDOM.src = "dice-" + dice + ".png";
+    diceDOM.style.display = "block";
 
-  var dice = Math.floor(Math.random() * 6) + 1;
-  console.log(dice);
-  //display
-  var diceDOM = document.querySelector(".dice");
-  diceDOM.src = "dice-" + dice + ".png";
-  diceDOM.style.display = "block";
-
-  if (dice !== 1) {
-    //continue
-    roundScore += dice;
-    document.querySelector("#current-" + activePlayer).textContent = roundScore;
-  } else {
-    //next player
-    nextPlayer();
+    if (dice !== 1) {
+      //continue
+      roundScore += dice;
+      document.querySelector(
+        "#current-" + activePlayer
+      ).textContent = roundScore;
+    } else {
+      //next player
+      nextPlayer();
+    }
   }
 });
 
 document.querySelector(".btn-hold").addEventListener("click", function() {
   //add cutrrent scor eto global score
   //ups ui
-  scores[activePlayer] += roundScore;
-  document.querySelector("#score-" + activePlayer).textContent =
-    scores[activePlayer];
-  if (scores[activePlayer] >= 20) {
-    document.querySelector("#name-" + activePlayer).textContent = "Winner!";
-    alert(activePlayer + 1 + " Ganhou o jogo!");
-  } else {
-    nextPlayer();
+  if (gamePlaying) {
+    scores[activePlayer] += roundScore;
+    document.querySelector("#score-" + activePlayer).textContent =
+      scores[activePlayer];
+    if (scores[activePlayer] >= 20) {
+      document.querySelector("#name-" + activePlayer).textContent = "Winner!";
+      alert(activePlayer + 1 + " Ganhou o jogo!");
+      gamePlaying = false;
+    } else {
+      nextPlayer();
+    }
   }
 });
 
@@ -80,29 +86,8 @@ function nextPlayer() {
   document.getElementById("current-0").textContent = "0";
   document.getElementById("current-1").textContent = "0";
 
-  //document.querySelector(".player-0-panel").classList.remove("active");
-  //document.querySelector(".player-1-panel").classList.add("active");
-
   document.querySelector(".player-0-panel").classList.toggle("active");
   document.querySelector(".player-1-panel").classList.toggle("active");
 }
 
 document.querySelector(".btn-new").addEventListener("click", init);
-
-/* console.log(dice); */
-
-//document.querySelector("#current-" + activePlayer).textContent = dice;
-/* document.querySelector("#current-" + activePlayer).innerHTML =
-  "<em>" + dice + "<em/>"; */
-
-/* var x = document.querySelector("#score-1").textContent;
-console.log(x);
-var x = document.querySelector("#score-1");
-console.log(x);
-
-
-
-/* function btn() {
-  console.log("Btn clicked");
-}
-document.querySelector(".btn-roll").addEventListener("click", btn); */
