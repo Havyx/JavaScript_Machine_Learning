@@ -3,7 +3,7 @@
 
 //function declaration
 calcular(1965);
-
+//54
 function calcular(year) {
   console.log(2019 - year);
 }
@@ -15,8 +15,10 @@ var retirement = function(year) {
 };
 
 console.log(age);
+//undefined
 var age = 23;
 console.log(age);
+//23
 
 function foo() {
   var age = 65;
@@ -25,15 +27,18 @@ function foo() {
 
 foo();
 console.log(age);
+//65
 
 var a = "Var a";
 //scopping
 function escop_chain() {
   console.log(a);
+  //Var a
   var b = "Var b";
   escop();
   function escop() {
     console.log(a + b);
+    //Var aVar b
   }
 }
 
@@ -75,3 +80,4 @@ var susy = {
 susy.calculateAge = issoeumobjeto.calculateAge;
 
 susy.calculateAge(1900);
+//{name: "Suzy", yearofbirth: 1990, calculateAge: ƒ}
