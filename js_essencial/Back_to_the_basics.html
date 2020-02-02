@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // Variaveis sintaxe
+
+    var age = 28;
+    var primeiro_nome = "julia";
+    var ultimo_nome = "ode";
+    console.log("A " + primeiro_nome + "é phoda e tem " + age);
+
+    var ano, safra;
+
+    ano = 2017;
+    safra = 2010;
+
+    //Condicionais
+
+    var comparacao = ano > safra;
+
+    if (comparacao === true) {
+      console.log("É true man");
+    } else {
+      console.log("É falso man");
+    }
+
+    //funcoes
+
+    function testacasos(cargo, salario) {
+      switch (cargo) {
+        case "operador":
+          return (salario = 500);
+        case "cientista":
+          return (salario = 1000);
+        case "gestor":
+          return (salario = 2000);
+        default:
+          return (salario = 1500);
+      }
+    }
+
+    console.log(testacasos("gestor"));
+
+    //ARRAYS
+
+    var names = ["jonh", "Tia", "July", 1990, "Eli"];
+    console.log(names);
+    console.log(names[0]);
+    console.log(names[0].length);
+
+    names.push("blue");
+    console.log(names);
+
+    names.unshift("Mr");
+    console.log(names);
+    names.pop();
+    console.log(names);
+    names.shift();
+    console.log(names);
+
+    console.log(names.indexOf("Tia"));
+
+    //OBJECTS -> SAO CRIADOS COM A MESMA SINTAXE DOS DICIONARIOS DO PYTHON, MAS ELES FUNCIONAM COMO OBJETOS DO PYTHON
+
+    var objeto_js = {
+      primeiro_nome: "Tia",
+      segundo_nome: "Poe",
+      idade: 34,
+      profissao: "Maga",
+      ismarried: false,
+      calcidade: function(bd) {
+        this.age = bd - this.idade;
+      }
+    };
+
+    console.log(objeto_js.primeiro_nome + " é casada ? " + objeto_js.ismarried);
+
+    objeto_js.calcidade(100);
+    console.log(objeto_js.age);
+    console.log(objeto_js);
+    console.log(objeto_js.age - 20);
+
+    // LOOPS
+
+    for (var i = 0; i < names.length; i++) {
+      if (typeof names[i] === "string") {
+        console.log(names[i]);
+      } else {
+        break;
+      }
+    }
+  </script>
+</html>
