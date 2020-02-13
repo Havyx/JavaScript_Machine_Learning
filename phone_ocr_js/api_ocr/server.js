@@ -28,7 +28,14 @@ import bodyParser from 'body-parser';
 import upload from './config/storage';
 import { extractText } from './lib/imageHandler';
 const app = express();
+const teste = []
+
 app.use(bodyParser.urlencoded({ extended: true }))
+
+app.get('/', function (req, res) {
+  res.send(teste)
+})
+
 app.post('/upload', upload.single('image'), async (req, res, next) => {
   const file = req.file
   if (!file) {
@@ -40,6 +47,7 @@ app.post('/upload', upload.single('image'), async (req, res, next) => {
   await extractText(file.path).then(text => {
     const result = { data: text, ...file };
     res.json(result);
+    teste.push({'resposta': result})
   }).catch(error => {
     res.json(error);
   });

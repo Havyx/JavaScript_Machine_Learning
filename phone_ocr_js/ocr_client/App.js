@@ -19,7 +19,7 @@ export default class App extends React.Component {
     if (this.camera) {
       this.setState({ spinner: true });
       // Configuração da câmera
-      const options = { quality: 0.5, base64: true };
+      const options = { quality: 0.2, base64: true };
       const data = await this.camera.takePictureAsync(options);
       const text = await handleUpload(data);
       Alert.alert("Texto Extraído", text.data.trim());
